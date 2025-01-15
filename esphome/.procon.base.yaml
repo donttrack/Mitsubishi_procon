@@ -603,6 +603,11 @@ sensor:
     value_type: U_WORD
     accuracy_decimals: 1
     state_class: "measurement"
+    filters:
+       - clamp:
+         min_value: 0
+         max_value: 25
+         ignore_out_of_range: true
 
     ## Version of main software (FC4: 199, MA: 30200)
 #  - platform: modbus_controller
