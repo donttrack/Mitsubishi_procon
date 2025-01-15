@@ -605,9 +605,9 @@ sensor:
     state_class: "measurement"
     filters:
        - clamp:
-         min_value: 0
-         max_value: 25
-         ignore_out_of_range: true
+          min_value: 0
+          max_value: 25
+          ignore_out_of_range: true
 
     ## Version of main software (FC4: 199, MA: 30200)
 #  - platform: modbus_controller
