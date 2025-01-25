@@ -209,6 +209,10 @@ sensor:
     state_class: "measurement"
     filters:
       - multiply: 0.1
+      - clamp:
+         min_value: -15
+         max_value: 40
+         ignore_out_of_range: true
 
     ## Flow Temperature (signed) (FC4: 60, MA: 30061)
   - platform: modbus_controller
