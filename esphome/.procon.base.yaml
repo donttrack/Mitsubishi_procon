@@ -92,7 +92,7 @@ sensor:
     value_type: U_WORD
     accuracy_decimals: 0
     state_class: "measurement"
-    filter:
+    filters:
        - clamp:
          min_value: 1
          max_value: 120
