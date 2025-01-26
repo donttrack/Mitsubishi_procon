@@ -94,8 +94,8 @@ sensor:
     state_class: "measurement"
     filters:
        - clamp:
-          min_value: 1
-          max_value: 120
+          min_value: -1
+          max_value: 150
           ignore_out_of_range: true
 
     ## Temperature Setpoint – Zone 1 (signed) (FC4: 40, MA: 30041)
