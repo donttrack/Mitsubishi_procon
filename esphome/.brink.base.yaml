@@ -263,12 +263,6 @@ sensor:
     accuracy_decimals: 0
     filters:
       - multiply: 0.041667
-    on_value:
-      then:
-        - sensor.template.publish:
-            id: brink_exchange_filter_in
-            state: !lambda |-
-              return id(brink_filter_change_days).state - id(brink_current_filter_days).state;
 
   - id: brink_exchange_filter_in
     name: ${brink_exchange_filter_in}
