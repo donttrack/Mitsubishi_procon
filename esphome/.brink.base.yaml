@@ -1,1 +1,412 @@
+###  Settings Brink Flair (no need to change normally)
+###  menu 14-Communication: TypeBus=Modbus, Slave Address=20, Baudrate=19200, Parity=Even
 
+modbus:
+  id: modbus_brink
+  send_wait_time: 200ms
+
+modbus_controller:
+  - id: ${name}
+    ## Brink Modbus slaveaddress 13
+    address: 13 
+    command_throttle: 200ms
+    setup_priority: -10
+    update_interval: 10s
+
+sensor:
+
+## Option for multiple DS18b20 on last 3 terminals -/Signal/+ 
+## Comment with # if not used.
+## 2x ds18b20: 
+#  - platform: dallas
+#    address: 0x233c01f095e2ca28  ##find adress in esphome log
+#    name: Temperature 1
+#    id: temperature_1
+#    filters:
+#    - filter_out: NAN
+#    - offset: 0.3
+
+#  - platform: dallas
+#    address: 0x903c01f095ea8128  ##find adress in esphome log
+#    name: Temperature 2
+#    id: temperature_2
+#    filters:
+#   - filter_out: NAN
+#   - offset: 0.1
+
+#  - platform: dallas
+#    address: 0xcd3c01f095d5a128  ##find adress in esphome log
+#    name: Temperature 3
+#    id: temperature_3
+#    filters:
+#    - filter_out: NAN
+#    - offset: -0.1
+
+#  - platform: dallas
+#    address: 0x633c01f095619f28  ##find adress in esphome log
+#    name: Temperature 4
+#    id: temperature_4
+#    filters:
+#    - filter_out: NAN
+#    - offset: 0.0
+
+  - id: brink_temp_to_inside
+    name: ${brink_temp_to_inside}
+    platform: modbus_controller
+    modbus_controller_id: ${name}
+    address: 4036
+    device_class: temperature
+    unit_of_measurement: "°C"
+    register_type: read
+    value_type: S_WORD
+    accuracy_decimals: 1
+    state_class: measurement
+    filters:
+      - multiply: 0.1
+
+  - id: brink_humidity_to_inside
+    name: ${brink_humidity_to_inside}
+    icon: "mdi:water-percent"
+    platform: modbus_controller
+    modbus_controller_id: ${name}
+    register_type: read
+    address: 4037
+    device_class: humidity
+    unit_of_measurement: "%"
+    value_type: U_WORD  
+    accuracy_decimals: 0
+    state_class: measurement
+
+  - id: brink_dewpoint_to_inside
+    name: ${brink_dewpoint_to_inside}
+    platform: template
+    lambda: |-
+        return (243.5*(log(id(brink_humidity_to_inside).state/100)+((17.67*id(brink_temp_to_inside).state)/
+        (243.5+id(brink_temp_to_inside).state)))/(17.67-log(id(brink_humidity_to_inside).state/100)-
+        ((17.67*id(brink_temp_to_inside).state)/(243.5+id(brink_temp_to_inside).state))));
+    unit_of_measurement: °C
+    update_interval: 15s
+    icon: 'mdi:thermometer-water'
+
+  - id: brink_temp_to_outside
+    name: ${brink_temp_to_outside}
+    platform: modbus_controller
+    modbus_controller_id: ${name}
+    address: 4046
+    device_class: temperature
+    unit_of_measurement: "°C"
+    register_type: read
+    value_type: S_WORD
+    accuracy_decimals: 1
+    state_class: measurement
+    filters:
+      - multiply: 0.1
+
+  - id: brink_humidity_to_outside
+    name: ${brink_humidity_to_outside}
+    platform: modbus_controller
+    modbus_controller_id: ${name}
+    icon: mdi:water-percent
+    register_type: read
+    address: 4047
+    device_class: humidity
+    unit_of_measurement: "%"
+    value_type: U_WORD  
+    accuracy_decimals: 0
+    state_class: measurement
+
+  - id: brink_temp_from_outside  # NTC1
+    name: ${brink_temp_from_outside}
+    platform: modbus_controller
+    modbus_controller_id: ${name}
+    address: 4081
+    device_class: temperature
+    unit_of_measurement: "°C"
+    register_type: read
+    value_type: S_WORD
+    accuracy_decimals: 1
+    state_class: measurement
+    filters:
+      - multiply: 0.1
+
+  - id: brink_supply_pressure
+    name: ${brink_supply_pressure}
+    platform: modbus_controller
+    modbus_controller_id: ${name}
+    icon: mdi:gauge
+    register_type: read
+    address: 4023
+    device_class: atmospheric_pressure
+    unit_of_measurement: "Pa"
+    value_type: S_WORD  
+    accuracy_decimals: 0
+    state_class: measurement
+    filters:
+      - multiply: 1.0
+    
+  - id: brink_exhaust_pressure
+    name: ${brink_exhaust_pressure}
+    platform: modbus_controller
+    modbus_controller_id: ${name}
+    icon: mdi:gauge
+    register_type: read
+    address: 4024
+    device_class: atmospheric_pressure
+    unit_of_measurement: "Pa"
+    value_type: S_WORD  
+    accuracy_decimals: 0
+    state_class: measurement
+    filters:
+      - multiply: 1.0
+
+  - id: brink_setpoint_inlet_volume
+    name: ${brink_setpoint_inlet_volume}
+    platform: modbus_controller
+    modbus_controller_id: ${name}
+    icon: mdi:fan
+    address: 4031
+    unit_of_measurement: "m3/h"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 0
+    state_class: measurement
+    filters:
+      - multiply: 1.0
+
+  - id: brink_current_inlet_volume
+    name: ${brink_current_inlet_volume}
+    platform: modbus_controller
+    modbus_controller_id: ${name}
+    icon: mdi:fan
+    address: 4032
+    unit_of_measurement: "m3/h"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 0
+    state_class: measurement
+    filters:
+      - multiply: 1.0
+
+  - id: brink_setpoint_outlet_volume
+    name: ${brink_setpoint_outlet_volume}
+    platform: modbus_controller
+    modbus_controller_id: ${name}
+    icon: mdi:fan
+    address: 4041
+    unit_of_measurement: "m3/h"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 0
+    state_class: measurement
+    filters:
+      - multiply: 1.0
+
+  - id: brink_current_outlet_volume
+    name: ${brink_current_outlet_volume}
+    platform: modbus_controller
+    modbus_controller_id: ${name}
+    icon: mdi:fan
+    address: 4042
+    unit_of_measurement: "m3/h"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 0
+    state_class: measurement
+    filters:
+      - multiply: 1.0
+
+  - id: brink_frost_heater_power
+    name: ${brink_frost_heater_power}
+    platform: modbus_controller
+    modbus_controller_id: ${name}
+    icon: mdi:penguin
+    address: 4071
+    unit_of_measurement: "%"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    state_class: measurement
+    filters:
+      - multiply: 1.0
+
+  - id: brink_frost_fan_reduction
+    name: ${brink_frost_fan_reduction}
+    platform: modbus_controller
+    modbus_controller_id: ${name}
+    icon: mdi:penguin
+    address: 4072
+    unit_of_measurement: "%"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    state_class: measurement
+    filters:
+      - multiply: 1.0
+
+  - id: brink_current_filter_hours
+    name: ${brink_current_filter_hours}
+    platform: modbus_controller
+    modbus_controller_id: ${name}
+    icon: mdi:clock-start
+    address: 4115
+    unit_of_measurement: ${hours}
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 0
+
+  - id: brink_current_filter_days
+    name: ${brink_current_filter_days}
+    platform: modbus_controller
+    modbus_controller_id: ${name}
+    icon: mdi:clock-start
+    address: 4115
+    unit_of_measurement: ${days}
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 0
+    filters:
+      - multiply: 0.041667
+    on_value:
+      then:
+        - sensor.template.publish:
+            id: brink_exchange_filter_in
+            state: !lambda |-
+              return id(brink_filter_change_days).state - id(brink_current_filter_days).state;
+
+  - id: brink_exchange_filter_in
+    name: ${brink_exchange_filter_in}
+    platform: template
+    unit_of_measurement: ${days}
+    accuracy_decimals: 0
+
+  - id: brink_filter_m3_h
+    name: ${brink_filter_m3_h}
+    platform: modbus_controller
+    modbus_controller_id: ${name}
+    icon: mdi:clock-start
+    address: 4116
+    unit_of_measurement: "m3/h"
+    register_type: read
+    value_type: U_DWORD
+    accuracy_decimals: 0
+    state_class: total
+
+  - id: brink_device_type
+    name: ${brink_device_type}
+    platform: modbus_controller
+    modbus_controller_id: ${name}
+    icon: mdi:penguin
+    address: 4004
+    unit_of_measurement: ""
+    register_type: read
+    value_type: U_WORD
+
+text_sensor:
+  - id: brink_status
+    name: ${brink_status}
+    platform: modbus_controller
+    modbus_controller_id: ${name}
+    register_type: read
+    address: 4020
+    raw_encode: NONE
+    icon: mdi:home-heart
+    skip_updates: 20
+    lambda: |-
+      uint16_t int_mode = (data[item->offset] << 8) + data[item->offset+1];
+      ESP_LOGD("main","Parsed operation mode int : %d", int_mode);
+      std::string mode_str;
+      switch (int_mode) {
+        case 0:  mode_str = "Standby"; break;
+        case 1:  mode_str = "Bootloader"; break;        
+        case 2:  mode_str = "Non Blocking Error"; break;
+        case 3:  mode_str = "Blocking Error"; break;
+        case 4:  mode_str = "Manual"; break;
+        case 5:  mode_str = "Holiday"; break;
+        case 6:  mode_str = "Night ventilation"; break;
+        case 7:  mode_str = "Party"; break;
+        case 8:  mode_str = "Bypass Boost"; break; 
+        case 9:  mode_str = "Normal Boost"; break; 
+        case 10:  mode_str = "Auto CO2"; break; 
+        case 11:  mode_str = "Auto eBus"; break; 
+        case 12:  mode_str = "Auto Modbus"; break; 
+        case 13:  mode_str = "Auto Lan/ Wlan portal"; break; 
+        case 14:  mode_str = "Auto Lan/ Wlan local"; break;                                                         
+      }
+      return mode_str;
+  
+  - id: brink_bypass_status
+    name: ${brink_bypass_status}
+    platform: modbus_controller
+    modbus_controller_id: ${name}
+    register_type: read
+    address: 4050
+    raw_encode: NONE
+    icon: mdi:valve
+    skip_updates: 20
+    lambda: |-
+      uint16_t int_mode = (data[item->offset] << 8) + data[item->offset+1];
+      std::string mode_str;
+      switch (int_mode) {
+        case 0:  mode_str = "${initialize}"; break;
+        case 1:  mode_str = "${opening}"; break;
+        case 2:  mode_str = "${closing}"; break;
+        case 3:  mode_str = "${open}"; break;
+        case 4:  mode_str = "${closed}"; break;
+        case 255:  mode_str = "${error}"; break;
+        default: mode_str = "${unknown}"; break;
+       }
+      return mode_str;
+
+  - id: brink_frost_status
+    name: ${brink_frost_status}
+    platform: modbus_controller
+    modbus_controller_id: ${name}
+    register_type: read
+    address: 4070
+    raw_encode: NONE
+    icon: mdi:penguin
+    skip_updates: 20
+    lambda: |-
+      uint16_t int_mode = (data[item->offset] << 8) + data[item->offset+1];
+      ESP_LOGD("main","Parsed operation mode int : %d", int_mode);
+      std::string mode_str;
+      switch (int_mode) {
+        case 0:  mode_str = "Initialize"; break;
+        case 1:  mode_str = "PowerUp Delay"; break;
+        case 2:  mode_str = "No Frost"; break;
+        case 3:  mode_str = "NoFrost Delay"; break;
+        case 4:  mode_str = "FrostControl Start Delay"; break;
+        case 5:  mode_str = "Wait For Icing"; break;
+        case 6:  mode_str = "Ice Detected Delay"; break;
+        case 7:  mode_str = "Heating"; break;
+        case 8:  mode_str = "Wait for Free Heater"; break;
+        case 9:  mode_str = "FanControl Start Delay"; break;
+        case 10:  mode_str = "FanControl Wait Delay"; break;
+        case 11:  mode_str = "FanControl"; break;
+        case 12:  mode_str = "Fan Off Delay"; break;
+        case 13:  mode_str = "Fan Off"; break;
+        case 14:  mode_str = "Fan Restarting"; break;
+        case 15:  mode_str = "Error"; break;
+        case 16:  mode_str = "Test modus"; break;
+        default: mode_str = "${unknown}"; break;
+       }
+      return mode_str;
+
+  - id: brink_filter_status
+    name: ${brink_filter_status}
+    platform: modbus_controller
+    modbus_controller_id: ${name}
+    register_type: read
+    address: 4100
+    raw_encode: NONE
+    icon: mdi:air-filter
+    skip_updates: 20
+    lambda: |-
+      uint16_t int_mode = (data[item->offset] << 8) + data[item->offset+1];
+      ESP_LOGD("main","Parsed operation mode int : %d", int_mode);
+      std::string mode_str;
+      switch (int_mode) {
+        case 0:  mode_str = "${not_dirty}"; break;
+        case 1:  mode_str = "${dirty}";
+      }
+      return mode_str;
