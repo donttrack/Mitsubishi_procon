@@ -5,6 +5,7 @@ modbus_controller:
   - id: Brink Flair
     ## Brink Modbus slaveaddress 13
     address: 13 
+    modbus_id: Modbus2
     command_throttle: 200ms
     setup_priority: -10
     update_interval: 10s
