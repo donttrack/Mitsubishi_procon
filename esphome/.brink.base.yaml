@@ -2,10 +2,10 @@
 ###  menu 14-Communication: TypeBus=Modbus, Slave Address=20, Baudrate=19200, Parity=Even
 
 modbus_controller:
-  - id: Brink Flair
+  - id: brink 
     ## Brink Modbus slaveaddress 13
     address: 13 
-    modbus_id: Modbus2
+    modbus_id: Modbus1
     command_throttle: 200ms
     setup_priority: -10
     update_interval: 10s
