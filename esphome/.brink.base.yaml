@@ -450,24 +450,6 @@ switch:
             delay(20) ;
             controller->queue_command(set_value_cmd);
 
-button:
-  - id: brink_reset_filter_button
-    name: Filter reset
-    platform: template
-    on_press:
-      then:
-        - switch.turn_on: brink_reset_filter
-        - delay: 2s
-        - switch.turn_off: brink_reset_filter
-        - text_sensor.template.publish:
-            id: brink_filter_reset_on
-            state: !lambda |-
-              char str[22];
-              time_t currTime = id(brink_sntp_time).now().timestamp;
-              strftime(str, sizeof(str), "%a %d %b %H:%M", localtime(&currTime));
-              return  { str };
-
-
 ## temporarely test button for Step modbus mode after reboot or powerloss
 #  - id: brink_step_modbus
 #    name: Set Modbus Control Mode - Switch
@@ -622,16 +604,3 @@ number:
     max_value: 15
     mode: slider
     icon: mdi:home-export-outline
-
-  - id: brink_filter_change_days
-    name:  ${brink_filter_change_days}
-    platform: modbus_controller
-    modbus_controller_id: ${name}
-    register_type: holding
-    address: 6120
-    unit_of_measurement: ""
-    value_type: S_WORD      
-    min_value: 0
-    max_value: 365
-    mode: slider
-    icon: mdi:timer-sync-outline
