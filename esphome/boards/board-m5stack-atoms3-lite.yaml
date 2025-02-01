@@ -17,10 +17,10 @@ uart:
   rx_pin: GPIO5
 
 # i2c for extra sensor
-i2c:
-  - id: bus_a
-    sda: GPIO2
-    scl: GPIO1
+#i2c:
+ # - id: bus_a
+  #  sda: GPIO2
+   # scl: GPIO1
 
 # Enable/Disable logging
 logger:
