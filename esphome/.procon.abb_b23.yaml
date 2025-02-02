@@ -52,7 +52,7 @@ sensor:
     filters:
       - multiply: 0.01
       - clamp:
-         min_value: 0
+         min_value: 1
          max_value: 15000
          ignore_out_of_range: true
       
@@ -69,7 +69,7 @@ sensor:
     filters:
       - multiply: 0.01
       - clamp:
-         min_value: 0
+         min_value: 1
          max_value: 1800
          ignore_out_of_range: true
       
@@ -86,7 +86,7 @@ sensor:
     filters:
       - multiply: 0.01
       - clamp:
-         min_value: 0
+         min_value: 1
          max_value: 1500
          ignore_out_of_range: true
 
