@@ -52,13 +52,13 @@ sensor:
     filters:
       - multiply: 0.01
       - lambda: |-
-          auto clamp = [](float value, float min, float max) {
+         auto clamp = [](float value, float min, float max) {
             return std::max(min, std::min(max, value));
           };
-          float min_val = id(refrigerant_liquid_temperature).state * 0.98;
-          float max_val = id(refrigerant_liquid_temperature).state * 1.02;
-          float current_value = x;
-          float clamped_value = clamp(current_value, min_val, max_val);
+          float start_value = x;
+          float min_val = start_value * 0.90;
+          float max_val = start_value * 1.10;
+          float clamped_value = clamp(x, min_val, max_val);
           return clamped_value;
       
   - platform: modbus_controller
@@ -77,10 +77,10 @@ sensor:
           auto clamp = [](float value, float min, float max) {
             return std::max(min, std::min(max, value));
           };
-          float min_val = id(refrigerant_liquid_temperature).state * 0.98;
-          float max_val = id(refrigerant_liquid_temperature).state * 1.02;
-          float current_value = x;
-          float clamped_value = clamp(current_value, min_val, max_val);
+          float start_value = x;
+          float min_val = start_value * 0.90;
+          float max_val = start_value * 1.10;
+          float clamped_value = clamp(x, min_val, max_val);
           return clamped_value;
       
   - platform: modbus_controller
@@ -99,10 +99,10 @@ sensor:
           auto clamp = [](float value, float min, float max) {
             return std::max(min, std::min(max, value));
           };
-          float min_val = id(refrigerant_liquid_temperature).state * 0.98;
-          float max_val = id(refrigerant_liquid_temperature).state * 1.02;
-          float current_value = x;
-          float clamped_value = clamp(current_value, min_val, max_val);
+          float start_value = x;
+          float min_val = start_value * 0.90;
+          float max_val = start_value * 1.10;
+          float clamped_value = clamp(x, min_val, max_val);
           return clamped_value;
 
 ## Active export energy (kWh) B23
