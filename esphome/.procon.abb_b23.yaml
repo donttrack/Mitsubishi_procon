@@ -55,8 +55,8 @@ sensor:
           auto clamp = [](float value, float min, float max) {
             return std::max(min, std::min(max, value));
           };
-          float min_val = id(refrigerant_liquid_temperature).state * 0.90;
-          float max_val = id(refrigerant_liquid_temperature).state * 1.10;
+          float min_val = id(refrigerant_liquid_temperature).state * 0.98;
+          float max_val = id(refrigerant_liquid_temperature).state * 1.02;
           float current_value = x;
           float clamped_value = clamp(current_value, min_val, max_val);
           return clamped_value;
@@ -73,10 +73,15 @@ sensor:
     state_class: "total_increasing"
     filters:
       - multiply: 0.01
-      - clamp:
-         min_value: 1
-         max_value: 1800
-         ignore_out_of_range: true
+      - lambda: |-
+          auto clamp = [](float value, float min, float max) {
+            return std::max(min, std::min(max, value));
+          };
+          float min_val = id(refrigerant_liquid_temperature).state * 0.98;
+          float max_val = id(refrigerant_liquid_temperature).state * 1.02;
+          float current_value = x;
+          float clamped_value = clamp(current_value, min_val, max_val);
+          return clamped_value;
       
   - platform: modbus_controller
     modbus_controller_id: B23
@@ -90,10 +95,15 @@ sensor:
     state_class: "total_increasing"
     filters:
       - multiply: 0.01
-      - clamp:
-         min_value: 1
-         max_value: 1500
-         ignore_out_of_range: true
+      - lambda: |-
+          auto clamp = [](float value, float min, float max) {
+            return std::max(min, std::min(max, value));
+          };
+          float min_val = id(refrigerant_liquid_temperature).state * 0.98;
+          float max_val = id(refrigerant_liquid_temperature).state * 1.02;
+          float current_value = x;
+          float clamped_value = clamp(current_value, min_val, max_val);
+          return clamped_value;
 
 ## Active export energy (kWh) B23
   - platform: modbus_controller
