@@ -52,12 +52,14 @@ sensor:
     filters:
       - multiply: 0.01
       - lambda: |-
-         static float last_value = NAN;
+      static float last_value = NAN;
           if (isnan(last_value)) {
             last_value = x;
           }
           float max_val = last_value * 1.10;
           if (x > max_val) {
+            return last_value;
+          } else if (x < last_value) {
             return last_value;
           } else {
             last_value = x;
@@ -77,18 +79,19 @@ sensor:
     filters:
       - multiply: 0.01
       - lambda: |-
-         static float last_value = NAN;
-          if (isnan(last_value)) {
+        static float last_value = NAN;
+        if (isnan(last_value)) {
             last_value = x;
           }
-          float max_val = last_value * 1.10;
-          if (x > max_val) {
+        float max_val = last_value * 1.10;
+        if (x > max_val) {
+         return last_value;
+          } else if (x < last_value) {
             return last_value;
           } else {
             last_value = x;
             return x;
           }
-      
   - platform: modbus_controller
     modbus_controller_id: B23
     name: "B23 Import energy L3"
@@ -102,12 +105,14 @@ sensor:
     filters:
       - multiply: 0.01
       - lambda: |-
-         static float last_value = NAN;
+        static float last_value = NAN;
           if (isnan(last_value)) {
             last_value = x;
           }
-          float max_val = last_value * 1.10;
-          if (x > max_val) {
+        float max_val = last_value * 1.10;
+        if (x > max_val) {
+         return last_value;
+          } else if (x < last_value) {
             return last_value;
           } else {
             last_value = x;
