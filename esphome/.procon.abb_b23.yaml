@@ -52,14 +52,17 @@ sensor:
     filters:
       - multiply: 0.01
       - lambda: |-
-         auto clamp = [](float value, float min, float max) {
-            return std::max(min, std::min(max, value));
-          };
-          float start_value = x;
-          float min_val = start_value * 0.90;
-          float max_val = start_value * 1.10;
-          float clamped_value = clamp(x, min_val, max_val);
-          return clamped_value;
+         static float last_value = NAN;
+          if (isnan(last_value)) {
+            last_value = x;
+          }
+          float max_val = last_value * 1.10;
+          if (x > max_val) {
+            return last_value;
+          } else {
+            last_value = x;
+            return x;
+          }
       
   - platform: modbus_controller
     modbus_controller_id: B23
@@ -74,14 +77,17 @@ sensor:
     filters:
       - multiply: 0.01
       - lambda: |-
-          auto clamp = [](float value, float min, float max) {
-            return std::max(min, std::min(max, value));
-          };
-          float start_value = x;
-          float min_val = start_value * 0.90;
-          float max_val = start_value * 1.10;
-          float clamped_value = clamp(x, min_val, max_val);
-          return clamped_value;
+         static float last_value = NAN;
+          if (isnan(last_value)) {
+            last_value = x;
+          }
+          float max_val = last_value * 1.10;
+          if (x > max_val) {
+            return last_value;
+          } else {
+            last_value = x;
+            return x;
+          }
       
   - platform: modbus_controller
     modbus_controller_id: B23
@@ -96,14 +102,17 @@ sensor:
     filters:
       - multiply: 0.01
       - lambda: |-
-          auto clamp = [](float value, float min, float max) {
-            return std::max(min, std::min(max, value));
-          };
-          float start_value = x;
-          float min_val = start_value * 0.90;
-          float max_val = start_value * 1.10;
-          float clamped_value = clamp(x, min_val, max_val);
-          return clamped_value;
+         static float last_value = NAN;
+          if (isnan(last_value)) {
+            last_value = x;
+          }
+          float max_val = last_value * 1.10;
+          if (x > max_val) {
+            return last_value;
+          } else {
+            last_value = x;
+            return x;
+          }
 
 ## Active export energy (kWh) B23
   - platform: modbus_controller
