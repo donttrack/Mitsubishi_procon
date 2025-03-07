@@ -92,6 +92,7 @@ sensor:
             last_value = x;
             return x;
           }
+sensor:
   - platform: modbus_controller
     modbus_controller_id: B23
     name: "B23 Import energy L3"
@@ -105,19 +106,26 @@ sensor:
     filters:
       - multiply: 0.01
       - lambda: |-
-        static float last_value = NAN;
+          static float last_value = NAN;
+          const float max_valid_value = 250.0;  # Max waarde die wordt geaccepteerd
           if (isnan(last_value)) {
             last_value = x;
           }
-        float max_val = last_value * 1.10;
-        if (x > max_val) {
-         return last_value;
-          } else if (x < last_value) {
-            return last_value;
+          // Controleer of de waarde binnen het verwachte bereik valt (100-1000)
+          if (x >= 9000 && x <= max_valid_value) {
+            float max_val = last_value * 1.10;
+            if (x > max_val) {
+              return last_value;  # Als de waarde meer dan 10% hoger is, gebruik dan de vorige waarde
+            } else if (x < last_value) {
+              return last_value;  # Als de waarde lager is dan de vorige waarde, gebruik dan de vorige waarde
+            } else {
+              last_value = x;  # Anders update de laatste waarde
+              return x;
+            }
           } else {
-            last_value = x;
-            return x;
+            return last_value;  # Als de waarde buiten het bereik valt, gebruik de vorige waarde
           }
+
 
 ## Active export energy (kWh) B23
   - platform: modbus_controller
