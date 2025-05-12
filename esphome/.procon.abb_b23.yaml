@@ -7,7 +7,7 @@ modbus_controller:
     modbus_id: modbus1
     setup_priority: -10
     update_interval: 50s
-    timeout: 300ms
+    timeout: 400ms
     ## change parity frome even to none on the ABB B23 meter
     
 sensor:
@@ -51,17 +51,16 @@ sensor:
     accuracy_decimals: 2
     state_class: "total_increasing"
     filters:
-      - multiply: 0.01
-      - lambda: |-
+     - multiply: 0.01
+     - lambda: |-
         static float last_value = NAN;
         const float min_val = 0.0;  // Minimale onderwaarde
-        const float max_val_factor = 1.10;  // Maximaal 10% hoger dan de vorige waarde
+        const float max_increase = 1000.0;  // Maximale toename per update (pas dit aan)
         if (isnan(last_value)) {
           last_value = x;
         }
-        float max_val = last_value * max_val_factor;
-        if (x < min_val || x > max_val || x < last_value) {
-          return last_value;  // Gebruik de vorige waarde als de nieuwe waarde buiten het bereik valt
+        if (x < last_value || (x - last_value) > max_increase) {
+          return last_value;  // Gebruik de vorige waarde als de nieuwe waarde onwaarschijnlijk is
         } else {
           last_value = x;  // Update de laatste waarde
           return x;
@@ -77,18 +76,17 @@ sensor:
     unit_of_measurement: "kWh"
     accuracy_decimals: 2
     state_class: "total_increasing"
-    filters:
-     - multiply: 0.01
-     - lambda: |-
+      filters:
+    - multiply: 0.01
+    - lambda: |-
         static float last_value = NAN;
         const float min_val = 0.0;  // Minimale onderwaarde
-        const float max_val_factor = 1.10;  // Maximaal 10% hoger dan de vorige waarde
+        const float max_increase = 1000.0;  // Maximale toename per update (pas dit aan)
         if (isnan(last_value)) {
           last_value = x;
         }
-        float max_val = last_value * max_val_factor;
-        if (x < min_val || x > max_val || x < last_value) {
-          return last_value;  // Gebruik de vorige waarde als de nieuwe waarde buiten het bereik valt
+        if (x < last_value || (x - last_value) > max_increase) {
+          return last_value;  // Gebruik de vorige waarde als de nieuwe waarde onwaarschijnlijk is
         } else {
           last_value = x;  // Update de laatste waarde
           return x;
@@ -105,20 +103,16 @@ sensor:
     accuracy_decimals: 2
     state_class: "total_increasing"
     filters:
-      - multiply: 0.01
-      - lambda: |-
+     - multiply: 0.01
+     - lambda: |-
         static float last_value = NAN;
         const float min_val = 0.0;  // Minimale onderwaarde
-        const float max_val_factor = 1.10;  // Maximaal 10% hoger dan de vorige waarde
-
+        const float max_increase = 1000.0;  // Maximale toename per update (pas dit aan)
         if (isnan(last_value)) {
           last_value = x;
         }
-
-        float max_val = last_value * max_val_factor;
-
-        if (x < min_val || x > max_val || x < last_value) {
-          return last_value;  // Gebruik de vorige waarde als de nieuwe waarde buiten het bereik valt
+        if (x < last_value || (x - last_value) > max_increase) {
+          return last_value;  // Gebruik de vorige waarde als de nieuwe waarde onwaarschijnlijk is
         } else {
           last_value = x;  // Update de laatste waarde
           return x;
