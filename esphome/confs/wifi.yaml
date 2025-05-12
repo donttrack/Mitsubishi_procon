@@ -1,6 +1,6 @@
 substitutions:
-  esp_ip: "192.168.1.100"
-  esp_sidd: "Your_SSID"
+  esp_ip: "ESP_Host_IP"
+  esp_ssid: "WiFi_Network_Name"
   wifi_signal_db: "WiFi Signal (dB)"
   wifi_signal_proc: "WiFi Signal (%)"
 
@@ -11,7 +11,7 @@ wifi:
   power_save_mode: light
   ap:
     ssid: "${name}"
-    password: "configesp"
+    password: !secret ap_password
     ap_timeout: 15s
 
 captive_portal:
@@ -22,22 +22,25 @@ text_sensor:
       name: ${esp_ip}
       icon: mdi:ip
     ssid:
-      name: ${esp_sidd}
+      name: ${esp_ssid}
       icon: mdi:wifi
+    bssid:
+      name: "WiFi BSSID"
+      icon: mdi:router-wireless
 
 sensor:
-  - platform: wifi_signal # Reports the WiFi signal strength/RSSI in dB
+  - platform: wifi_signal
     name: ${wifi_signal_db}
     id: wifi_signal_db
     update_interval: 5s
     entity_category: diagnostic
-  - platform: copy # Reports the WiFi signal strength in %
+  - platform: copy
     source_id: wifi_signal_db
     name: ${wifi_signal_proc}
-    id: wifi_signal_proc
+    id: wifi_signal_strength_percent
     filters:
       - lambda: return min(max(2 * (x + 100.0), 0.0), 100.0);
-    unit_of_measurement: " %"
+    unit_of_measurement: "%"
     entity_category: diagnostic
-    device_class: ""
+    device_class: signal_strength
     icon: mdi:wifi
