@@ -6,7 +6,7 @@ modbus_controller:
     address: 3
     modbus_id: modbus1
     setup_priority: -10
-    update_interval: 30s
+    update_interval: 50s
     timeout: 300ms
     ## change parity frome even to none on the ABB B23 meter
     
