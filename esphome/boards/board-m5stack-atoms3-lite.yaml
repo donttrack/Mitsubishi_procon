@@ -10,8 +10,8 @@ esp32:
 
 uart:
   id: mod_bus
-  tx_pin: GPIO17
-  rx_pin: GPIO18
+  tx_pin: GPIO6
+  rx_pin: GPIO5
   baud_rate: 9600
   stop_bits: 1
 
