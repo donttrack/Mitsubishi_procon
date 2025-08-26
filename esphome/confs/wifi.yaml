@@ -1,9 +1,3 @@
-substitutions:
-  esp_ip: "ESP_Host_IP"
-  esp_ssid: "WiFi_Network_Name"
-  wifi_signal_db: "WiFi Signal (dB)"
-  wifi_signal_proc: "WiFi Signal (%)"
-
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
