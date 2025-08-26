@@ -1,5 +1,5 @@
 climate:
-  - platform: thermostat
+  - platform: modbus_controller
     name: "Ecodan Ruimteklimaat"
     modbus_controller_id: procon
 
