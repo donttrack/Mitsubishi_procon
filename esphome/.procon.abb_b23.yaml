@@ -51,20 +51,20 @@ sensor:
     accuracy_decimals: 2
     state_class: "total_increasing"
     filters:
-     - multiply: 0.01
-     - lambda: |-
-        static float last_value = NAN;
-        const float min_val = 0.0;  // Minimale onderwaarde
-        const float max_increase = 1000.0;  // Maximale toename per update (pas dit aan)
-        if (isnan(last_value)) {
-          last_value = x;
-        }
-        if (x < last_value || (x - last_value) > max_increase) {
-          return last_value;  // Gebruik de vorige waarde als de nieuwe waarde onwaarschijnlijk is
-        } else {
-          last_value = x;  // Update de laatste waarde
-          return x;
-        }
+      - multiply: 0.01
+      - lambda: |-
+          static float last_value = NAN;
+          const float min_val = 0.0;  // Minimale onderwaarde
+          const float max_increase = 1000.0;  // Maximale toename per update (pas dit aan)
+          if (isnan(last_value)) {
+            last_value = x;
+          }
+          if (x < last_value || (x - last_value) > max_increase) {
+            return last_value;  // Gebruik de vorige waarde als de nieuwe waarde onwaarschijnlijk is
+          } else {
+            last_value = x;  // Update de laatste waarde
+            return x;
+          }
       
   - platform: modbus_controller
     modbus_controller_id: B23
@@ -76,21 +76,21 @@ sensor:
     unit_of_measurement: "kWh"
     accuracy_decimals: 2
     state_class: "total_increasing"
-      filters:
-    - multiply: 0.01
-    - lambda: |-
-        static float last_value = NAN;
-        const float min_val = 0.0;  // Minimale onderwaarde
-        const float max_increase = 1000.0;  // Maximale toename per update (pas dit aan)
-        if (isnan(last_value)) {
-          last_value = x;
-        }
-        if (x < last_value || (x - last_value) > max_increase) {
-          return last_value;  // Gebruik de vorige waarde als de nieuwe waarde onwaarschijnlijk is
-        } else {
-          last_value = x;  // Update de laatste waarde
-          return x;
-        }
+    filters:
+      - multiply: 0.01
+      - lambda: |-
+          static float last_value = NAN;
+          const float min_val = 0.0;  // Minimale onderwaarde
+          const float max_increase = 1000.0;  // Maximale toename per update (pas dit aan)
+          if (isnan(last_value)) {
+            last_value = x;
+          }
+          if (x < last_value || (x - last_value) > max_increase) {
+            return last_value;  // Gebruik de vorige waarde als de nieuwe waarde onwaarschijnlijk is
+          } else {
+            last_value = x;  // Update de laatste waarde
+            return x;
+          }
 
   - platform: modbus_controller
     modbus_controller_id: B23
@@ -103,20 +103,20 @@ sensor:
     accuracy_decimals: 2
     state_class: "total_increasing"
     filters:
-     - multiply: 0.01
-     - lambda: |-
-        static float last_value = NAN;
-        const float min_val = 0.0;  // Minimale onderwaarde
-        const float max_increase = 1000.0;  // Maximale toename per update (pas dit aan)
-        if (isnan(last_value)) {
-          last_value = x;
-        }
-        if (x < last_value || (x - last_value) > max_increase) {
-          return last_value;  // Gebruik de vorige waarde als de nieuwe waarde onwaarschijnlijk is
-        } else {
-          last_value = x;  // Update de laatste waarde
-          return x;
-        }
+      - multiply: 0.01
+      - lambda: |-
+          static float last_value = NAN;
+          const float min_val = 0.0;  // Minimale onderwaarde
+          const float max_increase = 1000.0;  // Maximale toename per update (pas dit aan)
+          if (isnan(last_value)) {
+            last_value = x;
+          }
+          if (x < last_value || (x - last_value) > max_increase) {
+            return last_value;  // Gebruik de vorige waarde als de nieuwe waarde onwaarschijnlijk is
+          } else {
+            last_value = x;  // Update de laatste waarde
+            return x;
+          }
 
 ## Active export energy (kWh) B23
   - platform: modbus_controller
