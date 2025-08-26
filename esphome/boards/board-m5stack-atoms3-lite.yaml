@@ -8,18 +8,19 @@ esp32:
   framework:
     type: arduino
 
+# uart for modbus rtu  NOT_TESTED_YET
 uart:
   id: mod_bus
-  tx_pin: GPIO6
-  rx_pin: GPIO5
   baud_rate: 9600
   stop_bits: 1
+  tx_pin: GPIO6
+  rx_pin: GPIO5
 
 # i2c for extra sensor
-#i2c:
- # - id: bus_a
-  #  sda: GPIO2
-   # scl: GPIO1
+i2c:
+  - id: bus_a
+    sda: GPIO2
+    scl: GPIO1
 
 # Enable/Disable logging
 logger:
