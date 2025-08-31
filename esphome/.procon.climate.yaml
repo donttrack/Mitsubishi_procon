@@ -1,31 +1,94 @@
+# Modbus controller configuratie
+modbus_controller:
+  id: procon
+  address: 1
+  # vul hier de juiste uart/rs485 settings in
+
+# Sensor voor huidige temperatuur
+sensor:
+  - platform: modbus_controller
+    modbus_controller_id: procon
+    name: "Ruimtetemperatuur"
+    id: ruimtetemp
+    address: 1
+    register_type: holding
+    value_type: U_WORD
+    lambda: |-
+      return x / 10.0;
+
+# Number voor setpoint temperatuur
+number:
+  - platform: modbus_controller
+    modbus_controller_id: procon
+    name: "Setpoint Ruimtetemperatuur"
+    id: setpointtemp
+    address: 3
+    register_type: holding
+    value_type: U_WORD
+    lambda: |-
+      return x / 10.0;
+    write_lambda: |-
+      return (uint16_t)(x * 10);
+
+# Switch voor aan/uit
+switch:
+  - platform: modbus_controller
+    modbus_controller_id: procon
+    name: "Ecodan Aan/Uit"
+    id: ecodan_power
+    address: 25
+    register_type: holding
+    value_type: U_WORD
+    write_lambda: |-
+      if (state) return 1;
+      else return 0;
+
+# Number voor modus (verwarmen/koelen)
+number:
+  - platform: modbus_controller
+    modbus_controller_id: procon
+    name: "Ecodan Modus"
+    id: ecodan_mode
+    address: 28
+    register_type: holding
+    value_type: U_WORD
+    lambda: |-
+      if (x == 0) return 1;  // heat
+      if (x == 4) return 2;  // cool
+      return 0;              // off
+    write_lambda: |-
+      if (x == 1) return 0;
+      if (x == 2) return 4;
+      return 0;
+
+# Template climate
 climate:
-  - platform: thermostat
-    name: "${name} Climate"
-    id: ${name}_climate
+  - platform: template
+    name: "Ecodan Ruimteklimaat"
+    current_temperature_template: |-
+      return id(ruimtetemp).state;
+    target_temperature_template: |-
+      return id(setpointtemp).state;
+    set_target_temperature_action:
+      - number.set:
+          id: setpointtemp
+          value: !lambda 'return x;'
+    modes:
+      - HEAT
+      - COOL
+      - OFF
+    mode_action:
+      - lambda: |-
+          if (x == climate::CLIMATE_MODE_HEAT) {
+            id(ecodan_mode).set_value(1);
+            id(ecodan_power).turn_on();
+          } else if (x == climate::CLIMATE_MODE_COOL) {
+            id(ecodan_mode).set_value(2);
+            id(ecodan_power).turn_on();
+          } else {
+            id(ecodan_power).turn_off();
+          }
+    min_temperature: 15
+    max_temperature: 25
     visual:
-      min_temperature: 10.0
-      max_temperature: 45.0
       temperature_step: 0.5
-    sensor: room_temperature_zone_1
-    min_heating_off_time: 60s
-    min_heating_run_time: 60s
-    ## remove min_cool_time if not used
-    #min_cooling_off_time: 60s
-    #min_cooling_run_time: 60s
-    min_idle_time: 30s
-    heat_action:
-      - logger.log:
-          format: "Heating"
-          level: DEBUG
-          tag: climate
-    ## remove cool_action if not used
-    #cool_action:
-    #  - logger.log:
-    #      format: "Cooling"
-    #      level: DEBUG
-    #      tag: climate
-    idle_action:
-      - logger.log:
-          format: "Idle"
-          level: DEBUG
-          tag: climate
