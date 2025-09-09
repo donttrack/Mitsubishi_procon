@@ -1,50 +1,31 @@
 climate:
-  - platform: modbus_controller
-    name: "Ecodan Ruimteklimaat"
-    modbus_controller_id: procon
-
-    # Huidige ruimtetemperatuur (40002 = adres 1)
-    current_temperature_register:
-      address: 1
-      value_type: U_WORD
-      read_lambda: |-
-        return x / 10.0f;
-
-    # Setpoint ruimte (40004 = adres 3)
-    target_temperature_register:
-      address: 3
-      value_type: U_WORD
-      write_lambda: |-
-        return (uint16_t)(x * 10);
-      read_lambda: |-
-        return x / 10.0f;
-
-    # Aan/uit via 40026 = adres 25
-    command_on_register:
-      address: 25
-      value_type: U_WORD
-      write_lambda: |-
-        return 1;
-    command_off_register:
-      address: 25
-      value_type: U_WORD
-      write_lambda: |-
-        return 0;
-
-    # Modus via 40029 = adres 28
-    mode_register:
-      address: 28
-      value_type: U_WORD
-      write_lambda: |-
-        if (x == climate::CLIMATE_MODE_HEAT) return 0;
-        if (x == climate::CLIMATE_MODE_COOL) return 4;
-        return 0;
-      read_lambda: |-
-        if (x == 0) return climate::CLIMATE_MODE_HEAT;
-        if (x == 4) return climate::CLIMATE_MODE_COOL;
-        return climate::CLIMATE_MODE_OFF;
-
+  - platform: thermostat
+    name: "${name} Climate"
+    id: ${name}_climate
     visual:
-      min_temperature: 15
-      max_temperature: 25
+      min_temperature: 10.0
+      max_temperature: 45.0
       temperature_step: 0.5
+    sensor: room_temperature_zone_1
+    min_heating_off_time: 60s
+    min_heating_run_time: 60s
+    ## remove min_cool_time if not used
+    #min_cooling_off_time: 60s
+    #min_cooling_run_time: 60s
+    min_idle_time: 30s
+    heat_action:
+      - logger.log:
+          format: "Heating"
+          level: DEBUG
+          tag: climate
+    ## remove cool_action if not used
+    #cool_action:
+    #  - logger.log:
+    #      format: "Cooling"
+    #      level: DEBUG
+    #      tag: climate
+    idle_action:
+      - logger.log:
+          format: "Idle"
+          level: DEBUG
+          tag: climate
