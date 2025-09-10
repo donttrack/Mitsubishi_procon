@@ -20,6 +20,8 @@ substitutions:
   brink_exhaust_pressure: Druk uitblaas
   brink_setpoint_inlet_volume: Inlaatluchtvolume ingesteld
   brink_current_inlet_volume: Huidig inlaat luchtvolume
+  brink_speed_supply_fan: Snelheid inblaas fan
+  brink_speed_exhaust_fan: Snelheid uitblaas fan
   brink_setpoint_outlet_volume: Uitlaatluchtvolume ingesteld
   brink_current_outlet_volume: Huidig uitlaat luchtvolume
   brink_frost_heater_power: Bevriezing heaterpower
@@ -65,31 +67,31 @@ substitutions:
   not_dirty: Niet vervuild
   dirty: Vervuild
 
-#text_sensor:
- # - id: brink_filter_reset_on
-  #  name: ${brink_filter_reset_on}
-   # platform: template
-    #icon: mdi:clock-start
-    #update_interval: 600s
+text_sensor:
+  - id: brink_filter_reset_on
+    name: ${brink_filter_reset_on}
+    platform: template
+    icon: mdi:clock-start
+    update_interval: 600s
     ## dutch translation of date
-    #filters:
-     # - substitute:
-      #  - "Jan -> jan"
-      #  - "Feb -> feb"
-      #  - "Mar -> maart"
-       # - "Apr -> april"
-      #  - "Mai -> mei"
-       # - "Jun -> juni"
-      #  - "Jul -> juli"
-       # - "Aug -> aug"
-     #   - "Sep -> sept"
-      #  - "Okt -> okt"
-      #  - "Nov -> nov"
-       # - "Dec -> dec"
-      #  - "Mon -> ma"
-       # - "Tue -> di"
-      #  - "Wed -> wo"
-      #  - "Thu -> do"
-      #  - "Fri -> vri"
-       # - "Sat -> zat"
-      #  - "Sun -> zon"
+    filters:
+      - substitute:
+        - "Jan -> jan"
+        - "Feb -> feb"
+        - "Mar -> maart"
+        - "Apr -> april"
+        - "Mai -> mei"
+        - "Jun -> juni"
+        - "Jul -> juli"
+        - "Aug -> aug"
+        - "Sep -> sept"
+        - "Okt -> okt"
+        - "Nov -> nov"
+        - "Dec -> dec"
+        - "Mon -> ma"
+        - "Tue -> di"
+        - "Wed -> wo"
+        - "Thu -> do"
+        - "Fri -> vri"
+        - "Sat -> zat"
+        - "Sun -> zon"
