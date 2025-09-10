@@ -68,7 +68,7 @@ substitutions:
   dirty: Vervuild
 
 text_sensor:
-  - id: brink_filter_reset_on
+  - id: brink_filter_reset_on(2)
     name: ${brink_filter_reset_on}
     platform: template
     icon: mdi:clock-start
