@@ -69,7 +69,7 @@ substitutions:
 
 text_sensor:
   - id: brink_filter_reset_on_2
-    name: ${brink_filter_reset_on}
+    name: ${brink_filter_reset_on_2}
     platform: template
     icon: mdi:clock-start
     update_interval: 600s
