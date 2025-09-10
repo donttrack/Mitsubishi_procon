@@ -1,6 +1,13 @@
 ###  Settings Brink Flair (no need to change normally)
 ###  menu 14-Communication: TypeBus=Modbus, Slave Address=20, Baudrate=19200, Parity=Even
-
+# Sync time
+time:
+  - platform: sntp
+    id: brink_sntp_time
+    timezone: ${timezone}
+    on_time_sync:
+      then:
+        - logger.log: "Synchronized sntp clock"
 modbus_controller:
   - id: brink 
     ## Brink Modbus slaveaddress 13
