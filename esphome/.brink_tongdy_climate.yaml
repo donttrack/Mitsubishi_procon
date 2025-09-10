@@ -1,6 +1,6 @@
 modbus_controller:
   - id: tongdy
-    address: 4
+    address: 5
     modbus_id: modbus1
     setup_priority: -10
     update_interval: 400s
