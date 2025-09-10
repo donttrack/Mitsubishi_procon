@@ -4,10 +4,11 @@
 time:
   - platform: sntp
     id: brink_sntp_time
-    timezone: ${timezone}
+    timezone: Europe/Amsterdam
     on_time_sync:
       then:
-        - logger.log: "Synchronized sntp clock"
+        - logger.log: "Synchronized SNTP clock"
+
 modbus_controller:
   - id: brink 
     ## Brink Modbus slaveaddress 13
