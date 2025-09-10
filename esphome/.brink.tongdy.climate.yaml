@@ -1,7 +1,7 @@
 #### ABB B23 3phase kWh Meter ####
 
 modbus_controller:
-  - id: Tongdy
+  - id: tongdy
     ## ABB meter slaveadress 3
     address: 2
     modbus_id: modbus1
