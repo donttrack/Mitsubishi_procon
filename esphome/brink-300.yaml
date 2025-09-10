@@ -1,3 +1,11 @@
+# Sync time
+time:
+  - platform: sntp
+    id: brink_sntp_time
+    timezone: Europe/Amsterdam
+    on_time_sync:
+      then:
+        - logger.log: "Synchronized SNTP clock"
 number:
 # Maximum value for Flair 300 is 300m3/h
   - id: brink_modbus_flow_rate
