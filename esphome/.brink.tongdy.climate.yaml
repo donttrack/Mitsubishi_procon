@@ -3,7 +3,7 @@
 modbus_controller:
   - id: tongdy
     ## ABB meter slaveadress 3
-    address: 2
+    address: 4
     modbus_id: modbus1
     setup_priority: -10
     update_interval: 300s
