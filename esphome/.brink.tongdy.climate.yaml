@@ -75,7 +75,7 @@ uart:
 
 modbus:
   id: modbus1
-  uart_id: uart1
+  uart_id: uart
   send_wait_time: 200ms
 
 modbus_controller:
