@@ -54,3 +54,41 @@ sensor:
     register_type: holding
     address: 0x0005
     value_type: U_WORD
+
+# Toegevoegd: Modbus sniffer configuratie
+esphome:
+  name: modbus_sniffer
+  platformio_options:
+    board_build.flash_mode: dio
+
+logger:
+  level: VERY_VERBOSE
+  baud_rate: 0   # zet de seriële log uit op UART0 zodat RS485 vrij is
+
+uart:
+  id: uart1
+  tx_pin: GPIO6      # pas aan naar jouw RS485 TX-pin
+  rx_pin: GPIO5      # pas aan naar jouw RS485 RX-pin
+  baud_rate: 19200
+  stop_bits: 1
+  parity: NONE
+
+modbus:
+  id: modbus1
+  uart_id: uart1
+  send_wait_time: 200ms
+
+modbus_controller:
+  - id: tg9
+    address: 1        # begin met 1, later aanpassen
+    modbus_id: modbus1
+    update_interval: 5s
+
+# Dummy sensor puur om verkeer te genereren en te loggen
+sensor:
+  - platform: modbus_controller
+    modbus_controller_id: tg9
+    name: "Test Register"
+    register_type: holding
+    address: 0
+    value_type: U_WORD
