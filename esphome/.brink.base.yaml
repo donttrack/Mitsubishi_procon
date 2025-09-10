@@ -1,7 +1,6 @@
 ###  Settings Brink Flair (no need to change normally)
 ###  menu 14-Communication: TypeBus=Modbus, Slave Address=20, Baudrate=19200, Parity=Even
 
-
 modbus_controller:
   - id: brink 
     ## Brink Modbus slaveaddress 13
