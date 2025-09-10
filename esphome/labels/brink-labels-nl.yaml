@@ -65,31 +65,31 @@ substitutions:
   not_dirty: Niet vervuild
   dirty: Vervuild
 
-text_sensor:
-  - id: brink_filter_reset_on
-    name: ${brink_filter_reset_on}
-    platform: template
-    icon: mdi:clock-start
-    update_interval: 600s
+#text_sensor:
+ # - id: brink_filter_reset_on
+  #  name: ${brink_filter_reset_on}
+   # platform: template
+    #icon: mdi:clock-start
+    #update_interval: 600s
     ## dutch translation of date
-    filters:
-      - substitute:
-        - "Jan -> jan"
-        - "Feb -> feb"
-        - "Mar -> maart"
-        - "Apr -> april"
-        - "Mai -> mei"
-        - "Jun -> juni"
-        - "Jul -> juli"
-        - "Aug -> aug"
-        - "Sep -> sept"
-        - "Okt -> okt"
-        - "Nov -> nov"
-        - "Dec -> dec"
-        - "Mon -> ma"
-        - "Tue -> di"
-        - "Wed -> wo"
-        - "Thu -> do"
-        - "Fri -> vri"
-        - "Sat -> zat"
-        - "Sun -> zon"
+    #filters:
+     # - substitute:
+      #  - "Jan -> jan"
+      #  - "Feb -> feb"
+      #  - "Mar -> maart"
+       # - "Apr -> april"
+      #  - "Mai -> mei"
+       # - "Jun -> juni"
+      #  - "Jul -> juli"
+       # - "Aug -> aug"
+     #   - "Sep -> sept"
+      #  - "Okt -> okt"
+      #  - "Nov -> nov"
+       # - "Dec -> dec"
+      #  - "Mon -> ma"
+       # - "Tue -> di"
+      #  - "Wed -> wo"
+      #  - "Thu -> do"
+      #  - "Fri -> vri"
+       # - "Sat -> zat"
+      #  - "Sun -> zon"
