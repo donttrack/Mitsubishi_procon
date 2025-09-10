@@ -80,7 +80,7 @@ modbus:
 
 modbus_controller:
   - id: tg9
-    address: 1        # begin met 1, later aanpassen
+    address: 6        # begin met 1, later aanpassen
     modbus_id: modbus1
     update_interval: 5s
 
