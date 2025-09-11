@@ -6,6 +6,33 @@ modbus_controller:
     update_interval: 400s
     #timeout: 400ms
 
+# Controllers voor meerdere adressen
+modbus_controller:
+  - id: tongdy_addr1
+    address: 2
+    modbus_id: modbus1
+    update_interval: 5s
+
+  - id: tongdy_addr2
+    address: 4
+    modbus_id: modbus1
+    update_interval: 5s
+
+  - id: tongdy_addr3
+    address: 5
+    modbus_id: modbus1
+    update_interval: 5s
+
+  - id: tongdy_addr4
+    address: 6
+    modbus_id: modbus1
+    update_interval: 5s
+
+  - id: tongdy_addr5
+    address: 7
+    modbus_id: modbus1
+    update_interval: 5s
+
 # Test-sensoren voor elk adres
 sensor:
   - platform: modbus_controller
