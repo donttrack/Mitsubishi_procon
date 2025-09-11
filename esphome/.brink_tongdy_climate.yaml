@@ -126,7 +126,6 @@ sensor:
     value_type: FP32
     unit_of_measurement: "ppm"
 
-sensor:
   - platform: modbus_controller
     modbus_controller_id: tongdy
     name: "TG9 CO₂ test 2"
