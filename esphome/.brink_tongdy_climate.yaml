@@ -5,15 +5,17 @@ modbus_controller:
     setup_priority: -10
     update_interval: 10s
     command_throttle: 200ms
-    #timeout: 400ms
 
 sensor:
-  # --- Actuele waarden ---
   - platform: modbus_controller
     modbus_controller_id: tongdy
     name: "TG9 Temperatuur"
-    register_type: holding
-    address: 1004
+    register_type: custom
+    custom_command:
+      function_code: 0x04
+      start_address: 1004
+      register_count: 2
+    response_callback: modbus_controller_fp32
     value_type: FP32
     unit_of_measurement: "°C"
     accuracy_decimals: 2
@@ -21,118 +23,14 @@ sensor:
   - platform: modbus_controller
     modbus_controller_id: tongdy
     name: "TG9 Relatieve Vochtigheid"
-    register_type: holding
-    address: 1006
+    register_type: custom
+    custom_command:
+      function_code: 0x04
+      start_address: 1006
+      register_count: 2
+    response_callback: modbus_controller_fp32
     value_type: FP32
     unit_of_measurement: "%"
     accuracy_decimals: 2
 
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "TG9 CO₂"
-    register_type: holding
-    address: 1008
-    value_type: FP32
-    unit_of_measurement: "ppm"
-    accuracy_decimals: 0
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "TG9 TVOC"
-    register_type: holding
-    address: 1010
-    value_type: FP32
-    unit_of_measurement: "mg/m³"
-    accuracy_decimals: 3
-
-  # --- 1-uursgemiddelden ---
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "TG9 Temp 1h Gemiddelde"
-    register_type: holding
-    address: 1104
-    value_type: FP32
-    unit_of_measurement: "°C"
-    accuracy_decimals: 2
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "TG9 RV 1h Gemiddelde"
-    register_type: holding
-    address: 1106
-    value_type: FP32
-    unit_of_measurement: "%"
-    accuracy_decimals: 2
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "TG9 CO₂ 1h Gemiddelde"
-    register_type: holding
-    address: 1108
-    value_type: FP32
-    unit_of_measurement: "ppm"
-    accuracy_decimals: 0
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "TG9 TVOC 1h Gemiddelde"
-    register_type: holding
-    address: 1110
-    value_type: FP32
-    unit_of_measurement: "mg/m³"
-    accuracy_decimals: 3
-
-  # --- 24-uursgemiddelden ---
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "TG9 Temp 24h Gemiddelde"
-    register_type: holding
-    address: 1204
-    value_type: FP32
-    unit_of_measurement: "°C"
-    accuracy_decimals: 2
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "TG9 RV 24h Gemiddelde"
-    register_type: holding
-    address: 1206
-    value_type: FP32
-    unit_of_measurement: "%"
-    accuracy_decimals: 2
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "TG9 CO₂ 24h Gemiddelde"
-    register_type: holding
-    address: 1208
-    value_type: FP32
-    unit_of_measurement: "ppm"
-    accuracy_decimals: 0
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "TG9 TVOC 24h Gemiddelde"
-    register_type: holding
-    address: 1210
-    value_type: FP32
-    unit_of_measurement: "mg/m³"
-    accuracy_decimals: 3
-
-  # --- Test registers ---
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "TG9 CO₂ test2"
-    register_type: holding
-    address: 1003 # 1004 in datasheet, maar -1 in ESPHome
-    value_type: FP32
-    unit_of_measurement: "ppm"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "TG9 CO₂ test 2"
-    register_type: holding
-    address: 1003 # datasheet 1004 → -1 offset
-    value_type: FP32_R
-    unit_of_measurement: "ppm"
-    accuracy_decimals: 0
+  # ... herhaal voor alle sensors, pas adres en register_count aan!
