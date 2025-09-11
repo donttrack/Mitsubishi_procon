@@ -2,6 +2,7 @@ modbus_controller:
   - id: tongdy
     address: 12         # Slave-adres van jouw Tongdy
     modbus_id: modbus1
+    command_throttle: 380ms
     setup_priority: -10
     update_interval: 10s
 
