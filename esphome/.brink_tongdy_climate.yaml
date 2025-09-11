@@ -8,11 +8,11 @@ modbus_controller:
     #timeout: 400ms
 
 sensor:
-  # --- Actuele waarden ---
+  # --- Actuele waarden ---sensor:
   - platform: modbus_controller
     modbus_controller_id: tongdy
     name: "TG9 Temperatuur"
-    register_type: read
+    register_type: input
     address: 1004
     value_type: FP32
     unit_of_measurement: "°C"
@@ -21,7 +21,7 @@ sensor:
   - platform: modbus_controller
     modbus_controller_id: tongdy
     name: "TG9 Relatieve Vochtigheid"
-    register_type: read
+    register_type: input
     address: 1006
     value_type: FP32
     unit_of_measurement: "%"
@@ -30,7 +30,7 @@ sensor:
   - platform: modbus_controller
     modbus_controller_id: tongdy
     name: "TG9 CO₂"
-    register_type: read
+    register_type: input
     address: 1008
     value_type: FP32
     unit_of_measurement: "ppm"
