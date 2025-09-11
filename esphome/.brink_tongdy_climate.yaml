@@ -3,43 +3,16 @@ modbus_controller:
     address: 12
     modbus_id: modbus1
     setup_priority: -10
-    update_interval: 400s
-    #timeout: 400ms
+    update_interval: 5s   # korter om te testen
 
-# Controllers voor meerdere adressen
-  - id: tongdy_addr1
-    address: 2
-    modbus_id: modbus1
-    update_interval: 5s
-
-  - id: tongdy_addr2
-    address: 4
-    modbus_id: modbus1
-    update_interval: 5s
-
-  - id: tongdy_addr3
-    address: 5
-    modbus_id: modbus1
-    update_interval: 5s
-
-  - id: tongdy_addr4
-    address: 6
-    modbus_id: modbus1
-    update_interval: 5s
-
-  - id: tongdy_addr5
-    address: 7
-    modbus_id: modbus1
-    update_interval: 5s
-
-  # Lees registers 1 t/m 20 uit
-- platform: modbus_controller
+sensor:
+  - platform: modbus_controller
     modbus_controller_id: tongdy
     name: "Tongdy PM2.5"
     register_type: holding
     address: 1000
-    value_type: FP32
     register_count: 2
+    value_type: FP32
     byte_swap: false
     word_swap: true
     unit_of_measurement: "µg/m³"
@@ -49,8 +22,8 @@ modbus_controller:
     name: "Tongdy PM10"
     register_type: holding
     address: 1002
-    value_type: FP32
     register_count: 2
+    value_type: FP32
     byte_swap: false
     word_swap: true
     unit_of_measurement: "µg/m³"
@@ -60,8 +33,8 @@ modbus_controller:
     name: "Tongdy Temperatuur"
     register_type: holding
     address: 1004
-    value_type: FP32
     register_count: 2
+    value_type: FP32
     byte_swap: false
     word_swap: true
     unit_of_measurement: "°C"
@@ -71,8 +44,8 @@ modbus_controller:
     name: "Tongdy Luchtvochtigheid"
     register_type: holding
     address: 1006
-    value_type: FP32
     register_count: 2
+    value_type: FP32
     byte_swap: false
     word_swap: true
     unit_of_measurement: "%"
@@ -82,8 +55,8 @@ modbus_controller:
     name: "Tongdy CO₂"
     register_type: holding
     address: 1008
-    value_type: FP32
     register_count: 2
+    value_type: FP32
     byte_swap: false
     word_swap: true
     unit_of_measurement: "ppm"
@@ -93,69 +66,8 @@ modbus_controller:
     name: "Tongdy TVOC"
     register_type: holding
     address: 1010
-    value_type: FP32
     register_count: 2
+    value_type: FP32
     byte_swap: false
     word_swap: true
     unit_of_measurement: "mg/m³"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "Reg 1000-1001"
-    register_type: holding
-    address: 1000
-    register_count: 2
-    value_type: FP32
-    byte_swap: false
-    word_swap: true
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "Reg 1002-1003"
-    register_type: holding
-    address: 1002
-    register_count: 2
-    value_type: FP32
-    byte_swap: false
-    word_swap: true
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "Reg 1004-1005"
-    register_type: holding
-    address: 1004
-    register_count: 2
-    value_type: FP32
-    byte_swap: false
-    word_swap: true
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "Reg 1006-1007"
-    register_type: holding
-    address: 1006
-    register_count: 2
-    value_type: FP32
-    byte_swap: false
-    word_swap: true
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "Reg 1008-1009"
-    register_type: holding
-    address: 1008
-    register_count: 2
-    value_type: FP32
-    byte_swap: false
-    word_swap: true
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "Reg 1010-1011"
-    register_type: holding
-    address: 1010
-    register_count: 2
-    value_type: FP32
-    byte_swap: false
-    word_swap: true
-    
