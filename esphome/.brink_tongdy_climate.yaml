@@ -1,6 +1,6 @@
 modbus_controller:
   - id: tongdy
-    address: 17
+    address: 18
     modbus_id: modbus1
     setup_priority: -10
     update_interval: 400s
@@ -8,22 +8,22 @@ modbus_controller:
 
 # Controllers voor meerdere adressen
   - id: tongdy_addr1
-    address: 13
+    address: 19
     modbus_id: modbus1
     update_interval: 5s
 
   - id: tongdy_addr2
-    address: 14
+    address: 20
     modbus_id: modbus1
     update_interval: 5s
 
   - id: tongdy_addr3
-    address: 15
+    address: 21
     modbus_id: modbus1
     update_interval: 5s
 
   - id: tongdy_addr4
-    address: 16
+    address: 22
     modbus_id: modbus1
     update_interval: 5s
 
