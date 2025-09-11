@@ -126,3 +126,13 @@ sensor:
     value_type: FP32
     unit_of_measurement: "ppm"
 
+  - platform: modbus_controller
+    modbus_controller_id: tg9
+    name: "TG9 CO₂ test"
+    register_type: read
+    address: 1003   # datasheet 1004
+    value_type: FP32
+    swap_words: true
+    unit_of_measurement: "ppm"
+    accuracy_decimals: 0
+
