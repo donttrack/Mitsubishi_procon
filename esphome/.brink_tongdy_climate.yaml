@@ -117,3 +117,12 @@ sensor:
     value_type: FP32
     unit_of_measurement: "mg/m³"
     accuracy_decimals: 3
+
+  - platform: modbus_controller
+    modbus_controller_id: tongdy
+    name: "TG9 CO₂ test2"
+    register_type: read
+    address: 1003   # 1004 in datasheet, maar -1 in ESPHome
+    value_type: FP32
+    unit_of_measurement: "ppm"
+
