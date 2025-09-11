@@ -33,7 +33,6 @@ modbus_controller:
     update_interval: 5s
 
 # Test-sensoren voor elk adres
-sensor:
   - platform: modbus_controller
     modbus_controller_id: tongdy_addr1
     name: "Test CO₂ Addr 1"
@@ -119,142 +118,68 @@ sensor:
     value_type: U_WORD
 
   # Lees registers 1 t/m 20 uit
-  - platform: modbus_controller
+- platform: modbus_controller
     modbus_controller_id: tongdy
-    name: "Reg 1"
+    name: "Tongdy PM2.5"
     register_type: holding
-    address: 1
-    value_type: U_WORD
+    address: 1000
+    value_type: FP32
+    register_count: 2
+    byte_swap: false
+    word_swap: true
+    unit_of_measurement: "µg/m³"
 
   - platform: modbus_controller
     modbus_controller_id: tongdy
-    name: "Reg 2"
+    name: "Tongdy PM10"
     register_type: holding
-    address: 2
-    value_type: U_WORD
+    address: 1002
+    value_type: FP32
+    register_count: 2
+    byte_swap: false
+    word_swap: true
+    unit_of_measurement: "µg/m³"
 
   - platform: modbus_controller
     modbus_controller_id: tongdy
-    name: "Reg 3"
+    name: "Tongdy Temperatuur"
     register_type: holding
-    address: 3
-    value_type: U_WORD
+    address: 1004
+    value_type: FP32
+    register_count: 2
+    byte_swap: false
+    word_swap: true
+    unit_of_measurement: "°C"
 
   - platform: modbus_controller
     modbus_controller_id: tongdy
-    name: "Reg 4"
+    name: "Tongdy Luchtvochtigheid"
     register_type: holding
-    address: 4
-    value_type: U_WORD
+    address: 1006
+    value_type: FP32
+    register_count: 2
+    byte_swap: false
+    word_swap: true
+    unit_of_measurement: "%"
 
   - platform: modbus_controller
     modbus_controller_id: tongdy
-    name: "Reg 5"
+    name: "Tongdy CO₂"
     register_type: holding
-    address: 5
-    value_type: U_WORD
+    address: 1008
+    value_type: FP32
+    register_count: 2
+    byte_swap: false
+    word_swap: true
+    unit_of_measurement: "ppm"
 
   - platform: modbus_controller
     modbus_controller_id: tongdy
-    name: "Reg 6"
+    name: "Tongdy TVOC"
     register_type: holding
-    address: 6
-    value_type: U_WORD
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "Reg 7"
-    register_type: holding
-    address: 7
-    value_type: U_WORD
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "Reg 8"
-    register_type: holding
-    address: 8
-    value_type: U_WORD
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "Reg 9"
-    register_type: holding
-    address: 9
-    value_type: U_WORD
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "Reg 10"
-    register_type: holding
-    address: 10
-    value_type: U_WORD
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "Reg 11"
-    register_type: holding
-    address: 11
-    value_type: U_WORD
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "Reg 12"
-    register_type: holding
-    address: 12
-    value_type: U_WORD
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "Reg 13"
-    register_type: holding
-    address: 13
-    value_type: U_WORD
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "Reg 14"
-    register_type: holding
-    address: 14
-    value_type: U_WORD
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "Reg 15"
-    register_type: holding
-    address: 15
-    value_type: U_WORD
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "Reg 16"
-    register_type: holding
-    address: 16
-    value_type: U_WORD
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "Reg 17"
-    register_type: holding
-    address: 17
-    value_type: U_WORD
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "Reg 18"
-    register_type: holding
-    address: 18
-    value_type: U_WORD
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "Reg 19"
-    register_type: holding
-    address: 19
-    value_type: U_WORD
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "Reg 20"
-    register_type: holding
-    address: 20
-    value_type: U_WORD
+    address: 1010
+    value_type: FP32
+    register_count: 2
+    byte_swap: false
+    word_swap: true
+    unit_of_measurement: "mg/m³"
