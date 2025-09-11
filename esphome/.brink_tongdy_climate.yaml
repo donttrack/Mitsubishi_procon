@@ -130,9 +130,10 @@ sensor:
     modbus_controller_id: tg9
     name: "TG9 CO₂ test"
     register_type: read
-    address: 1003   # datasheet 1004
+    address: 1003   # datasheet 1004 → -1 offset
     value_type: FP32
-    swap_words: true
+    byte_order: BIG_ENDIAN
     unit_of_measurement: "ppm"
     accuracy_decimals: 0
+
 
