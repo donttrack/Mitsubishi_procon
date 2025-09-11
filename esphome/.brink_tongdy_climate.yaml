@@ -32,6 +32,7 @@ modbus_controller:
     modbus_id: modbus1
     update_interval: 5s
 
+sensor:
 # Test-sensoren voor elk adres
   - platform: modbus_controller
     modbus_controller_id: tongdy_addr1
