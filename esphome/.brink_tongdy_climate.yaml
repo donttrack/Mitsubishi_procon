@@ -9,7 +9,7 @@ modbus_controller:
 sensor:
   # --- Actuele waarden ---
   - platform: modbus_controller
-    modbus_controller_id: tg9
+    modbus_controller_id: tongdy
     name: "TG9 Temperatuur"
     register_type: read
     address: 1004
@@ -18,7 +18,7 @@ sensor:
     accuracy_decimals: 2
 
   - platform: modbus_controller
-    modbus_controller_id: tg9
+    modbus_controller_id: tongdy
     name: "TG9 Relatieve Vochtigheid"
     register_type: read
     address: 1006
@@ -27,7 +27,7 @@ sensor:
     accuracy_decimals: 2
 
   - platform: modbus_controller
-    modbus_controller_id: tg9
+    modbus_controller_id: tongdy
     name: "TG9 CO₂"
     register_type: read
     address: 1008
@@ -36,7 +36,7 @@ sensor:
     accuracy_decimals: 0
 
   - platform: modbus_controller
-    modbus_controller_id: tg9
+    modbus_controller_id: tongdy
     name: "TG9 TVOC"
     register_type: read
     address: 1010
@@ -46,7 +46,7 @@ sensor:
 
   # --- 1-uursgemiddelden ---
   - platform: modbus_controller
-    modbus_controller_id: tg9
+    modbus_controller_id: tongdy
     name: "TG9 Temp 1h Gemiddelde"
     register_type: read
     address: 1104
@@ -55,7 +55,7 @@ sensor:
     accuracy_decimals: 2
 
   - platform: modbus_controller
-    modbus_controller_id: tg9
+    modbus_controller_id: tongdy
     name: "TG9 RV 1h Gemiddelde"
     register_type: read
     address: 1106
@@ -64,7 +64,7 @@ sensor:
     accuracy_decimals: 2
 
   - platform: modbus_controller
-    modbus_controller_id: tg9
+    modbus_controller_id: tongdy
     name: "TG9 CO₂ 1h Gemiddelde"
     register_type: read
     address: 1108
@@ -73,7 +73,7 @@ sensor:
     accuracy_decimals: 0
 
   - platform: modbus_controller
-    modbus_controller_id: tg9
+    modbus_controller_id: tongdy
     name: "TG9 TVOC 1h Gemiddelde"
     register_type: read
     address: 1110
@@ -83,7 +83,7 @@ sensor:
 
   # --- 24-uursgemiddelden ---
   - platform: modbus_controller
-    modbus_controller_id: tg9
+    modbus_controller_id: tongdy
     name: "TG9 Temp 24h Gemiddelde"
     register_type: read
     address: 1204
@@ -92,7 +92,7 @@ sensor:
     accuracy_decimals: 2
 
   - platform: modbus_controller
-    modbus_controller_id: tg9
+    modbus_controller_id: tongdy
     name: "TG9 RV 24h Gemiddelde"
     register_type: read
     address: 1206
@@ -101,7 +101,7 @@ sensor:
     accuracy_decimals: 2
 
   - platform: modbus_controller
-    modbus_controller_id: tg9
+    modbus_controller_id: tongdy
     name: "TG9 CO₂ 24h Gemiddelde"
     register_type: read
     address: 1208
@@ -110,7 +110,7 @@ sensor:
     accuracy_decimals: 0
 
   - platform: modbus_controller
-    modbus_controller_id: tg9
+    modbus_controller_id: tongdy
     name: "TG9 TVOC 24h Gemiddelde"
     register_type: read
     address: 1210
