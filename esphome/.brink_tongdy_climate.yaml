@@ -12,10 +12,7 @@ sensor:
     modbus_controller_id: tongdy
     name: "TG9 Temperatuur"
     register_type: custom
-    custom_command:
-      function_code: 0x04
-      start_address: 1004
-      register_count: 2
+    custom_command: "function_code=4 start_address=1004 register_count=2"
     value_type: FP32
     unit_of_measurement: "°C"
     accuracy_decimals: 2
@@ -24,10 +21,7 @@ sensor:
     modbus_controller_id: tongdy
     name: "TG9 Relatieve Vochtigheid"
     register_type: custom
-    custom_command:
-      function_code: 0x04
-      start_address: 1006
-      register_count: 2
+    custom_command: "function_code=4 start_address=1006 register_count=2"
     value_type: FP32
     unit_of_measurement: "%"
     accuracy_decimals: 2
@@ -36,10 +30,7 @@ sensor:
     modbus_controller_id: tongdy
     name: "TG9 CO₂"
     register_type: custom
-    custom_command:
-      function_code: 0x04
-      start_address: 1008
-      register_count: 2
+    custom_command: "function_code=4 start_address=1008 register_count=2"
     value_type: FP32
     unit_of_measurement: "ppm"
     accuracy_decimals: 0
@@ -48,10 +39,7 @@ sensor:
     modbus_controller_id: tongdy
     name: "TG9 TVOC"
     register_type: custom
-    custom_command:
-      function_code: 0x04
-      start_address: 1010
-      register_count: 2
+    custom_command: "function_code=4 start_address=1010 register_count=2"
     value_type: FP32
     unit_of_measurement: "mg/m³"
     accuracy_decimals: 3
@@ -61,10 +49,7 @@ sensor:
     modbus_controller_id: tongdy
     name: "TG9 Temp 1h Gemiddelde"
     register_type: custom
-    custom_command:
-      function_code: 0x04
-      start_address: 1104
-      register_count: 2
+    custom_command: "function_code=4 start_address=1104 register_count=2"
     value_type: FP32
     unit_of_measurement: "°C"
     accuracy_decimals: 2
@@ -73,10 +58,7 @@ sensor:
     modbus_controller_id: tongdy
     name: "TG9 RV 1h Gemiddelde"
     register_type: custom
-    custom_command:
-      function_code: 0x04
-      start_address: 1106
-      register_count: 2
+    custom_command: "function_code=4 start_address=1106 register_count=2"
     value_type: FP32
     unit_of_measurement: "%"
     accuracy_decimals: 2
@@ -85,10 +67,7 @@ sensor:
     modbus_controller_id: tongdy
     name: "TG9 CO₂ 1h Gemiddelde"
     register_type: custom
-    custom_command:
-      function_code: 0x04
-      start_address: 1108
-      register_count: 2
+    custom_command: "function_code=4 start_address=1108 register_count=2"
     value_type: FP32
     unit_of_measurement: "ppm"
     accuracy_decimals: 0
@@ -97,10 +76,7 @@ sensor:
     modbus_controller_id: tongdy
     name: "TG9 TVOC 1h Gemiddelde"
     register_type: custom
-    custom_command:
-      function_code: 0x04
-      start_address: 1110
-      register_count: 2
+    custom_command: "function_code=4 start_address=1110 register_count=2"
     value_type: FP32
     unit_of_measurement: "mg/m³"
     accuracy_decimals: 3
@@ -110,10 +86,7 @@ sensor:
     modbus_controller_id: tongdy
     name: "TG9 Temp 24h Gemiddelde"
     register_type: custom
-    custom_command:
-      function_code: 0x04
-      start_address: 1204
-      register_count: 2
+    custom_command: "function_code=4 start_address=1204 register_count=2"
     value_type: FP32
     unit_of_measurement: "°C"
     accuracy_decimals: 2
@@ -122,10 +95,7 @@ sensor:
     modbus_controller_id: tongdy
     name: "TG9 RV 24h Gemiddelde"
     register_type: custom
-    custom_command:
-      function_code: 0x04
-      start_address: 1206
-      register_count: 2
+    custom_command: "function_code=4 start_address=1206 register_count=2"
     value_type: FP32
     unit_of_measurement: "%"
     accuracy_decimals: 2
@@ -134,10 +104,7 @@ sensor:
     modbus_controller_id: tongdy
     name: "TG9 CO₂ 24h Gemiddelde"
     register_type: custom
-    custom_command:
-      function_code: 0x04
-      start_address: 1208
-      register_count: 2
+    custom_command: "function_code=4 start_address=1208 register_count=2"
     value_type: FP32
     unit_of_measurement: "ppm"
     accuracy_decimals: 0
@@ -146,10 +113,7 @@ sensor:
     modbus_controller_id: tongdy
     name: "TG9 TVOC 24h Gemiddelde"
     register_type: custom
-    custom_command:
-      function_code: 0x04
-      start_address: 1210
-      register_count: 2
+    custom_command: "function_code=4 start_address=1210 register_count=2"
     value_type: FP32
     unit_of_measurement: "mg/m³"
     accuracy_decimals: 3
@@ -159,10 +123,7 @@ sensor:
     modbus_controller_id: tongdy
     name: "TG9 CO₂ test2"
     register_type: custom
-    custom_command:
-      function_code: 0x04
-      start_address: 1003 # 1004 in datasheet, maar -1 in ESPHome
-      register_count: 2
+    custom_command: "function_code=4 start_address=1003 register_count=2"
     value_type: FP32
     unit_of_measurement: "ppm"
 
@@ -170,10 +131,7 @@ sensor:
     modbus_controller_id: tongdy
     name: "TG9 CO₂ test 2"
     register_type: custom
-    custom_command:
-      function_code: 0x04
-      start_address: 1003 # datasheet 1004 → -1 offset
-      register_count: 2
+    custom_command: "function_code=4 start_address=1003 register_count=2"
     value_type: FP32_R
     unit_of_measurement: "ppm"
     accuracy_decimals: 0
