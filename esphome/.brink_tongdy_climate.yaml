@@ -131,6 +131,6 @@ sensor:
     name: "TG9 CO₂ test 2"
     register_type: read
     address: 1003   # datasheet 1004 → -1 offset
-    value_type: FP32_SWAP
+    value_type: FP32_R
     unit_of_measurement: "ppm"
     accuracy_decimals: 0
