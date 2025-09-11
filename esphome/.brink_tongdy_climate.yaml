@@ -7,29 +7,28 @@ modbus_controller:
     #timeout: 400ms
 
 # Controllers voor meerdere adressen
-modbus_controller:
   - id: tongdy_addr1
-    address: 2
+    address: 8
     modbus_id: modbus1
     update_interval: 5s
 
   - id: tongdy_addr2
-    address: 4
+    address: 9
     modbus_id: modbus1
     update_interval: 5s
 
   - id: tongdy_addr3
-    address: 5
+    address: 10
     modbus_id: modbus1
     update_interval: 5s
 
   - id: tongdy_addr4
-    address: 6
+    address: 11
     modbus_id: modbus1
     update_interval: 5s
 
   - id: tongdy_addr5
-    address: 7
+    address: 12
     modbus_id: modbus1
     update_interval: 5s
 
@@ -75,7 +74,6 @@ sensor:
     value_type: U_WORD
     unit_of_measurement: "ppm"
 
-sensor:
   - platform: modbus_controller
     modbus_controller_id: tongdy
     name: "Tongdy CO₂"
