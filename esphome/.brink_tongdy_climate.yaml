@@ -26,3 +26,24 @@ sensor:
     value_type: S_WORD
     accuracy_decimals: 1
     unit_of_measurement: "raw"
+
+      # --- Actuele waarden ---
+  - platform: modbus_controller
+    modbus_controller_id: tongdy
+    name: "TG9 co2 Concentratie"
+    register_type: holding
+    address: 0
+    value_type:US_WORD
+    accuracy_decimals: 1
+    unit_of_measurement: "ppm"
+
+  - platform: modbus_controller
+    modbus_controller_id: tongdy
+    name: "TG9 Relatieve vochtigheid"
+    register_type: holding
+    address: 2
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+    unit_of_measurement: "%"
