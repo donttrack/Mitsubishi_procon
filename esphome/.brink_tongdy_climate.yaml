@@ -15,9 +15,7 @@ sensor:
     address: 1
     value_type: S_WORD
     accuracy_decimals: 1
-    filters:
-      - multiply: 0.1
-    unit_of_measurement: "°C"
+    unit_of_measurement: "raw"
 
   # --- Actuele waarden ---
   - platform: modbus_controller
@@ -27,6 +25,4 @@ sensor:
     address: 2
     value_type: S_WORD
     accuracy_decimals: 1
-    filters:
-      - multiply: 0.1
-    unit_of_measurement: "°C"
+    unit_of_measurement: "raw"
