@@ -15,7 +15,7 @@ sensor:
     address: 1
     value_type: S_WORD
     accuracy_decimals: 1
-    unit_of_measurement: "raw"
+    unit_of_measurement: "C"
 
       # --- Actuele waarden ---
   - platform: modbus_controller
@@ -24,7 +24,6 @@ sensor:
     register_type: holding
     address: 0
     value_type: U_WORD
-    accuracy_decimals: 1
     unit_of_measurement: "ppm"
 
   - platform: modbus_controller
