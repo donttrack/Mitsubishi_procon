@@ -7,7 +7,7 @@ modbus_controller:
     command_throttle: 200ms
  
 sensor:
-  # CO₂
+    # CO₂
   - platform: modbus_controller
     modbus_controller_id: tongdy
     name: "CO2 FP32"
@@ -18,26 +18,10 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: tongdy
-    name: "CO2 FP32_SWAP"
+    name: "CO2 FP32_R"
     register_type: holding
     address: 4
-    value_type: FP32_SWAP
-    unit_of_measurement: "ppm"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "CO2 FP32_SWAP_BYTES"
-    register_type: holding
-    address: 4
-    value_type: FP32_SWAP_BYTES
-    unit_of_measurement: "ppm"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "CO2 FP32_DCBA"
-    register_type: holding
-    address: 4
-    value_type: FP32_DCBA
+    value_type: FP32_R
     unit_of_measurement: "ppm"
 
   # Temperatuur
@@ -51,26 +35,10 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: tongdy
-    name: "Temp FP32_SWAP"
+    name: "Temp FP32_R"
     register_type: holding
     address: 6
-    value_type: FP32_SWAP
-    unit_of_measurement: "°C"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "Temp FP32_SWAP_BYTES"
-    register_type: holding
-    address: 6
-    value_type: FP32_SWAP_BYTES
-    unit_of_measurement: "°C"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "Temp FP32_DCBA"
-    register_type: holding
-    address: 6
-    value_type: FP32_DCBA
+    value_type: FP32_R
     unit_of_measurement: "°C"
 
   # Relatieve Vochtigheid
@@ -84,24 +52,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: tongdy
-    name: "RV FP32_SWAP"
+    name: "RV FP32_R"
     register_type: holding
     address: 8
-    value_type: FP32_SWAP
-    unit_of_measurement: "%"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "RV FP32_SWAP_BYTES"
-    register_type: holding
-    address: 8
-    value_type: FP32_SWAP_BYTES
-    unit_of_measurement: "%"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "RV FP32_DCBA"
-    register_type: holding
-    address: 8
-    value_type: FP32_DCBA
+    value_type: FP32_R
     unit_of_measurement: "%"
