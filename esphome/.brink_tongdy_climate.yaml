@@ -9,55 +9,7 @@ modbus_controller:
 sensor:
   - platform: modbus_controller
     modbus_controller_id: tongdy
-    name: "HOLD 0"
-    register_type: holding
-    address: 0
-    value_type: U_WORD
-    unit_of_measurement: "raw"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "HOLD 1"
-    register_type: holding
-    address: 1
-    value_type: U_WORD
-    unit_of_measurement: "raw"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "HOLD 2"
-    register_type: holding
-    address: 2
-    value_type: U_WORD
-    unit_of_measurement: "raw"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "HOLD 3"
-    register_type: holding
-    address: 3
-    value_type: U_WORD
-    unit_of_measurement: "raw"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "HOLD 4"
-    register_type: holding
-    address: 4
-    value_type: U_WORD
-    unit_of_measurement: "raw"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "HOLD 5"
-    register_type: holding
-    address: 5
-    value_type: U_WORD
-    unit_of_measurement: "raw"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "HOLD 6"
+    name: "Temp raw word1"
     register_type: holding
     address: 6
     value_type: U_WORD
@@ -65,72 +17,8 @@ sensor:
 
   - platform: modbus_controller
     modbus_controller_id: tongdy
-    name: "HOLD 7"
+    name: "Temp raw word2"
     register_type: holding
     address: 7
-    value_type: U_WORD
-    unit_of_measurement: "raw"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "HOLD 8"
-    register_type: holding
-    address: 8
-    value_type: U_WORD
-    unit_of_measurement: "raw"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "HOLD 9"
-    register_type: holding
-    address: 9
-    value_type: U_WORD
-    unit_of_measurement: "raw"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "HOLD 10"
-    register_type: holding
-    address: 10
-    value_type: U_WORD
-    unit_of_measurement: "raw"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "HOLD 11"
-    register_type: holding
-    address: 11
-    value_type: U_WORD
-    unit_of_measurement: "raw"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "HOLD 12"
-    register_type: holding
-    address: 12
-    value_type: U_WORD
-    unit_of_measurement: "raw"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "HOLD 13"
-    register_type: holding
-    address: 13
-    value_type: U_WORD
-    unit_of_measurement: "raw"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "HOLD 14"
-    register_type: holding
-    address: 14
-    value_type: U_WORD
-    unit_of_measurement: "raw"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "HOLD 15"
-    register_type: holding
-    address: 15
     value_type: U_WORD
     unit_of_measurement: "raw"
