@@ -56,3 +56,117 @@ sensor:
     address: 13
     value_type: U_WORD
     unit_of_measurement: "raw"
+
+      - platform: modbus_controller
+    modbus_controller_id: tongdy
+    name: "IN 0"
+    register_type: input
+    address: 0
+    value_type: U_WORD
+    unit_of_measurement: "raw"
+  - platform: modbus_controller
+    modbus_controller_id: tongdy
+    name: "IN 1"
+    register_type: input
+    address: 1
+    value_type: U_WORD
+    unit_of_measurement: "raw"
+  - platform: modbus_controller
+    modbus_controller_id: tongdy
+    name: "IN 2"
+    register_type: input
+    address: 2
+    value_type: U_WORD
+    unit_of_measurement: "raw"
+  - platform: modbus_controller
+    modbus_controller_id: tongdy
+    name: "IN 3"
+    register_type: input
+    address: 3
+    value_type: U_WORD
+    unit_of_measurement: "raw"
+  - platform: modbus_controller
+    modbus_controller_id: tongdy
+    name: "IN 4"
+    register_type: input
+    address: 4
+    value_type: U_WORD
+    unit_of_measurement: "raw"
+  - platform: modbus_controller
+    modbus_controller_id: tongdy
+    name: "IN 5"
+    register_type: input
+    address: 5
+    value_type: U_WORD
+    unit_of_measurement: "raw"
+  - platform: modbus_controller
+    modbus_controller_id: tongdy
+    name: "IN 6"
+    register_type: input
+    address: 6
+    value_type: U_WORD
+    unit_of_measurement: "raw"
+  - platform: modbus_controller
+    modbus_controller_id: tongdy
+    name: "IN 7"
+    register_type: input
+    address: 7
+    value_type: U_WORD
+    unit_of_measurement: "raw"
+  - platform: modbus_controller
+    modbus_controller_id: tongdy
+    name: "IN 8"
+    register_type: input
+    address: 8
+    value_type: U_WORD
+    unit_of_measurement: "raw"
+  - platform: modbus_controller
+    modbus_controller_id: tongdy
+    name: "IN 9"
+    register_type: input
+    address: 9
+    value_type: U_WORD
+    unit_of_measurement: "raw"
+  - platform: modbus_controller
+    modbus_controller_id: tongdy
+    name: "IN 10"
+    register_type: input
+    address: 10
+    value_type: U_WORD
+    unit_of_measurement: "raw"
+  - platform: modbus_controller
+    modbus_controller_id: tongdy
+    name: "IN 11"
+    register_type: input
+    address: 11
+    value_type: U_WORD
+    unit_of_measurement: "raw"
+  - platform: modbus_controller
+    modbus_controller_id: tongdy
+    name: "IN 12"
+    register_type: input
+    address: 12
+    value_type: U_WORD
+    unit_of_measurement: "raw"
+  - platform: modbus_controller
+    modbus_controller_id: tongdy
+    name: "IN 13"
+    register_type: input
+    address: 13
+    value_type: U_WORD
+    unit_of_measurement: "raw"
+  - platform: modbus_controller
+    modbus_controller_id: tongdy
+    name: "IN 14"
+    register_type: input
+    address: 14
+    value_type: U_WORD
+    unit_of_measurement: "raw"
+  - platform: modbus_controller
+    modbus_controller_id: tongdy
+    name: "IN 15"
+    register_type: input
+    address: 15
+    value_type: U_WORD
+    unit_of_measurement: "raw"
+
