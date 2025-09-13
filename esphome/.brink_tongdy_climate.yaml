@@ -7,32 +7,29 @@ modbus_controller:
     command_throttle: 200ms
  
 sensor:
-  # CO₂ in ppm (32-bit float op registers 4 & 5)
-  - platform: modbus_controller
+   - platform: modbus_controller
     modbus_controller_id: tongdy
     name: "TG9 CO₂ Concentratie"
     register_type: holding
     address: 4
-    value_type: FP32
+    value_type: FP32_SWAP
     unit_of_measurement: "ppm"
     accuracy_decimals: 0
 
-  # Temperatuur in °C (32-bit float op registers 6 & 7)
   - platform: modbus_controller
     modbus_controller_id: tongdy
     name: "TG9 Temperatuur"
     register_type: holding
     address: 6
-    value_type: FP32
+    value_type: FP32_SWAP
     unit_of_measurement: "°C"
     accuracy_decimals: 1
 
-  # Relatieve vochtigheid in % (32-bit float op registers 8 & 9)
   - platform: modbus_controller
     modbus_controller_id: tongdy
     name: "TG9 Relatieve Vochtigheid"
     register_type: holding
     address: 8
-    value_type: FP32
+    value_type: FP32_SWAP
     unit_of_measurement: "%"
     accuracy_decimals: 1
