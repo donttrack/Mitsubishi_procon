@@ -7,53 +7,10 @@ modbus_controller:
     command_throttle: 200ms
  
 sensor:
-    # CO₂
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "CO2 FP32"
-    register_type: holding
-    address: 4
-    value_type: FP32
-    unit_of_measurement: "ppm"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "CO2 FP32_R"
-    register_type: holding
-    address: 4
-    value_type: FP32_R
-    unit_of_measurement: "ppm"
-
-  # Temperatuur
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "Temp FP32"
-    register_type: holding
-    address: 6
-    value_type: FP32
-    unit_of_measurement: "°C"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "Temp FP32_R"
-    register_type: holding
-    address: 6
-    value_type: FP32_R
-    unit_of_measurement: "°C"
-
-  # Relatieve Vochtigheid
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "RV FP32"
-    register_type: holding
-    address: 8
-    value_type: FP32
-    unit_of_measurement: "%"
-
-  - platform: modbus_controller
-    modbus_controller_id: tongdy
-    name: "RV FP32_R"
-    register_type: holding
-    address: 8
-    value_type: FP32_R
-    unit_of_measurement: "%"
+ - platform: modbus_controller
+   modbus_controller_id: tongdy
+   name: "TG9 CO₂ ruwe waarde"
+   register_type: holding
+   address: 4
+   value_type: U_WORD
+   unit_of_measurement: "raw"
