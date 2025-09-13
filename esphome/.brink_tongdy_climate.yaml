@@ -22,3 +22,10 @@ sensor:
     address: 7
     value_type: U_WORD
     unit_of_measurement: "raw"
+  
+  - platform: modbus_controller
+    modbus_controller_id: tongdy
+    name: "tongdy activatie"
+    register_type: holding
+    address: 14
+    value_type: U_WORD
